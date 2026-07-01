@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function App() {
   return (
     <div className="App">
@@ -8,7 +6,7 @@ function App() {
   );
 }
 export default App;
-importREact, { useState } from 'react';
+import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import './App.css';
 function App() {
