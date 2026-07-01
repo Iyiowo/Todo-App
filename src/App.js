@@ -23,7 +23,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="App">
       <h2>TODO App</h2>
       <form>
         <TextField id="outlined-basic" label="Make Todo" variant="outlined" style={{ margin: "0px 5px" }} size="small" value={input} onChange={e => setInput(e.target.value)} />
