@@ -1,10 +1,12 @@
 import AddTaskComponent from "./components/AddTaskComponent";
 import MyTaskComponent from "./components/MyTaskComponent";
 import NavbarComponent from "./components/NavbarComponent";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div className="h-full">
+      <Toaster />
       {/* navbar */}
       <NavbarComponent />
 
