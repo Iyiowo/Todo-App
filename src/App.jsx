@@ -1,6 +1,6 @@
-import { AddTaskComponent } from "./components/AddTaskComponent";
-import { MyTaskComponent } from "./components/MyTaskComponent";
-import { NavbarComponent } from "./components/NavbarComponent";
+import AddTaskComponent from "./components/AddTaskComponent";
+import MyTaskComponent from "./components/MyTaskComponent";
+import NavbarComponent from "./components/NavbarComponent";
 
 function App() {
   return (

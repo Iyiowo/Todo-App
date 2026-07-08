@@ -30,5 +30,4 @@ const AddTaskComponent = () => {
     </>
   );
 };
-
 export default AddTaskComponent;
