@@ -1,9 +1,44 @@
+import { useState } from "react";
+import { addTaskToFirestore } from "../services/taskService";
+import toast from "react-hot-toast";
 
 const AddTaskComponent = () => {
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskDesc, setTaskDesc] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleAddTask = async (e) => {
+    e.preventDefault();
+    if (!taskTitle.trim() || !taskDesc.trim()) {
+      toast.error("Task title and description cannot be empty!");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const newTask = {
+        title: taskTitle,
+        description: taskDesc,
+        createdAt: new Date().toISOString(),
+      };
+
+      await addTaskToFirestore(newTask);
+
+      setTaskTitle("");
+      setTaskDesc("");
+      toast.success("Task added successfully!");
+    } catch (err) {
+      toast.error("Failed to add task. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="flex flex-1/4 flex-col gap-2 bg-green-100 rounded-md p-4">
-        <h1 className="texte-green-900 font-semibold text-lg">Add Your Task</h1>
+        <h1 className="text-green-900 font-semibold text-lg">Add Your Task</h1>
         <form className="flex flex-col gap-3">
           <input
             type="text"
@@ -16,14 +51,17 @@ const AddTaskComponent = () => {
             id="taskDesc"
             cols={30}
             rows={12}
+            value={taskDesc}
+            onChange={(e) => setTaskDesc(e.target.value)}
             className="p-3 rounded-md text-sm w-full text-white border-gray-100 bg-green-800 placeholder:text-gray-300 resize-none"
             placeholder="Write your task here..."
           ></textarea>
 
           <button
             type="submit"
+            disabled={loading}
             className="btn w-full px-4 py-2 text-sm text-white rounded-md bg-green-600 hover:bg-green-800 transition ease-in-out">
-            Save
+            {loading ? "Saving..." : "Save"}
           </button>
         </form>
       </div>
