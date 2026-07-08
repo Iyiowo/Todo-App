@@ -8,7 +8,7 @@ const NavbarComponent = () => {
         <div className="flex gap-1 justify-center items-center cursor-pointer">
           <img src={LogoImg} alt="logo-image" className="h-6 w-6"></img>
           <p className="text-lg font-semibold text-green-600 hover:text-green-700 transition ease-in-out">
-            ToDOApp
+            ToDoApp
           </p>
         </div>
 
