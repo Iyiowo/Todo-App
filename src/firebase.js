@@ -11,6 +11,8 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGE_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_MESSAGE_SENDER_ID,
 };
+console.log("Firebase Config Loaded:", firebaseConfig);
+console.log("VITE_FIREBASE_PROJECT_ID =", import.meta.env.VITE_FIREBASE_PROJECT_ID);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

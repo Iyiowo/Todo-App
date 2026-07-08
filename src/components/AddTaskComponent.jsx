@@ -29,6 +29,7 @@ const AddTaskComponent = () => {
       setTaskDesc("");
       toast.success("Task added successfully!");
     } catch (err) {
+      console.error(err);
       toast.error("Failed to add task. Please try again.");
     } finally {
       setLoading(false);
@@ -39,11 +40,13 @@ const AddTaskComponent = () => {
     <>
       <div className="flex flex-1/4 flex-col gap-2 bg-green-100 rounded-md p-4">
         <h1 className="text-green-900 font-semibold text-lg">Add Your Task</h1>
-        <form className="flex flex-col gap-3">
+        <form onSubmit={handleAddTask} className="flex flex-col gap-3">
           <input
             type="text"
             id="taskTitle"
             placeholder="Task Title..."
+            value={taskTitle}
+            onChange={(e) => setTaskTitle(e.target.value)}
             className="p-3 w-full text-white rounded-md border-gray-100 bg-green-800 shadow-xs text-sm placeholder:text-gray-300"
           />
 
