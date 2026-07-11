@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, updateDoc, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
 export const addTaskToFirestore = async (task) => {
@@ -20,6 +20,26 @@ export const getAllTasks = async () => {
     return tasks;
   } catch (error) {
     console.error("Error fetching tasks:", error);
+    throw error;
+  }
+};
+
+export const updateTaskInFirestore = async (taskId, updatedTask) => {
+  try {
+    const taskRef = doc(db, "tasks", taskId);
+    await updateDoc(taskRef, updatedTask);
+  } catch (error) {
+    console.error("Error updating task: ", error);
+    throw error;
+  }
+};
+
+export const deleteTaskFromFirestore = async (taskId) => {
+  try {
+    const taskRef = doc(db, "tasks", taskId);
+    await deleteDoc(taskRef);
+  } catch (error) {
+    console.error("Error deleting task: ", error);
     throw error;
   }
 };
