@@ -19,7 +19,7 @@ function App() {
         <div className="flex flex-col gap-3 flex-3/4 bg-green-100 rounded-md p-4">
           <h1 className="text-green-900 font-semibold text-lg">My Tasks</h1>
           <MyTaskComponent />
-          <div>My Task Component</div>
+
         </div>
       </div>
     </div>
